@@ -21,15 +21,15 @@ chmod +x quil-manager.sh
 ```
 
  2. Select the options following the below steps:
-    - Option 1: Deploy Quilibrium Node (Only run once)
-    - Option 2: Verify the configurations and settings. Compare the output with the expected output in the [Options & Features](#options--features) section.
-    - Option 4: Install qclient and grpcurl
-    - Option 5: Start the Quilibrium Node and run for the first time to generate the .config folder.
-    - (Optional) Option 3: Modify the .config.yml file.
+    - Select `1` to Deploy Quilibrium Node (Only run once)
+    - Select `2` to verify the configurations and settings. Compare the output with the expected output in the [Options & Features](#options--features) section.
+    - Select `4` to Install qclient and grpcurl
+    - Select `5` to start the Quilibrium Node and run for the first time to generate the .config folder.
+    - (Optional) Select `3` to Modify the .config.yml file.
     - (Optional) Reboot the server to apply the ufw changes with 'sudo reboot'
-    - Option 5: Start the Quilibrium Node
-    - When `REPAIR` is generated in the `.config` folder, sync the Quilibrium Node with Option 9.
-    - (Optional) Backup the Quilibrium Node when `keys.yml` is fully generated (no longer showing `null`) with Option 10.
+    - Select `5` to start the Quilibrium Node
+    - When `REPAIR` is generated in the `.config` folder, sync the Quilibrium Node with `option 9`.
+    - (Optional) Backup the Quilibrium Node when `keys.yml` is fully generated (no longer showing `null`) with `option 10`.
     
 ## Options & Features
  1. **Deploy Quilibrium Node (Only run once)**
@@ -89,31 +89,31 @@ chmod +x quil-manager.sh
     grpcurl  qclient
     ```
 
-    3. **Modify the .config.yml file**
+ 3. **Modify the .config.yml file**
     After running the node for the first time, the .config.yml file will be generated. This option will modify the `listenGrpcMultiaddr` and `statsMultiaddr` settings in the .config.yml file to enable the GRPC.
 
-    4. **Install qclient and grpcurl**
+ 4. **Install qclient and grpcurl**
     Install qclient and grpcurl for the Quilibrium Node.
 
-    5. **Start the Quilibrium Node**
+ 5. **Start the Quilibrium Node**
     Start the Quilibrium Node service.
 
-    6. **Stop the Quilibrium Node**
+ 6. **Stop the Quilibrium Node**
     Stop the Quilibrium Node service.
 
-    7. **View the Quilibrium Node logs**
+ 7. **View the Quilibrium Node logs**
     Display real-time logs of the Quilibrium Node. Press `Ctrl + C` to exit the log.
 
-    8. **View the Quilibrium Node status(GRPC)**
+ 8. **View the Quilibrium Node status(GRPC)**
     Display the status of the Quilibrium Node using GRPC. Install the `grpcurl` and modify the .config.yml file before using this option.
 
-    9. **Sync the Quilibrium Node**
+ 9. **Sync the Quilibrium Node**
     Replace the `store` folder with the latest snapshot and create a backup of the current `store` folder.
 
-    10. **Backup the Quilibrium Node**
+ 10. **Backup the Quilibrium Node**
     Create a backup of the `config.yml` and `keys.yml`. A scp command will be generated for you to copy the backup file to your local machine.
 
-    11. **Update the Quilibrium Node**
+ 11. **Update the Quilibrium Node**
     Update the Quilibrium Node to the latest version.
 
 
