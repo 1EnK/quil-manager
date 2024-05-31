@@ -1,32 +1,80 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
+# Compiled source code
+*.com
+*.class
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
 *.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Application files
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node.js
+node_modules/
+
+# Java
+*.class
+*.jar
+*.war
+
+# PHP
+/vendor/
+
+# Ruby
+*.gem
+/log/
+*.log
+/tmp/
+
+# C/C++
 *.out
-*.app
+
+# Go
+*.exe
+*.test
+
+# Shell script logs
+*.sh.log
+
+# System cache
+*.cache
+.cache/
+
+# Miscellaneous
+*.swp
+*~
+*.swo
+*.bak
+*.tmp
