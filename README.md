@@ -5,6 +5,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Options & Features](#options--features)
+- [Node performance evaluation](#node-performance-evaluation)
 
 ## Installation
  1. Download the `.sh` script file to the server.
@@ -116,14 +117,14 @@ chmod +x quil-manager.sh
  11. **Update the Quilibrium Node**
     Update the Quilibrium Node to the latest version.
 
-## Performance evaluation
+## Node performance evaluation
  As of version 1.4.18, real-time rewards are not available. Instead, the contribution to the network is evaluated based on how quickly a node can sync, which is measured by the frame rate. Faster frame rates indicate higher performance and contribution to the network.
 
  The updated rewards system, as of the 5.31 update, supports this method of evaluation. Nodes with higher frame rates are considered to be contributing more effectively to the network. Nodes with higher frame rates also receive higher $Quil rewards based on the data collected.
 
  According to data from various nodes (from various providers), VPS or dedicated servers with lower frame rates accumulate significantly fewer rewards, even if their CPU cores are higher than other servers. This emphasizes the importance of frame rates in the rewards calculation. While there is no conclusive evidence directly linking CPU cores to frame rates, this observation supports the assumption that frame rates play a crucial role in the rewards calculation.
 
-## Check the Quilibrium Node frame rate
+ # Check the Quilibrium Node frame rate
  To check the current and projected frame rates of the Quilibrium Node, use the following command:
  1. Grant permission to the script.
 ```shell
