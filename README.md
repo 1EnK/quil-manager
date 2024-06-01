@@ -118,11 +118,11 @@ chmod +x quil-manager.sh
     Update the Quilibrium Node to the latest version.
 
 ## Node performance evaluation
- As of version 1.4.18, real-time rewards are not available. Instead, the contribution to the network is evaluated based on how quickly a node can sync, which is measured by the frame rate. Faster frame rates indicate higher performance and contribution to the network.
+ As of version 1.4.18, real-time rewards are not available. Instead, the contribution to the network is evaluated based on how quickly a node can sync, which is measured by the frame rate. **Faster frame rates indicate higher performance and contribution to the network**.
 
- The updated rewards system, as of the 5.31 update, supports this method of evaluation. Nodes with higher frame rates are considered to be contributing more effectively to the network. Nodes with higher frame rates also receive higher $Quil rewards based on the data collected.
+ As of the 5.31 reward update, the Post-1.4.18 rewards indicate that **nodes with higher frame rates accumulate more rewards than those with lower rates**. This shift from the previous evenly distributed rewards system emphasizes rewarding nodes for their performance and contribution to the network.
 
- According to data from various nodes (from various providers), VPS or dedicated servers with lower frame rates accumulate significantly fewer rewards, even if their CPU cores are higher than other servers. This emphasizes the importance of frame rates in the rewards calculation. While there is no conclusive evidence directly linking CPU cores to frame rates, this observation supports the assumption that frame rates play a crucial role in the rewards calculation.
+ According to data from various nodes (from various providers), VPS or dedicated servers with lower frame rates accumulate significantly fewer rewards, even if their CPU cores are higher than other servers. This emphasizes the importance of frame rates in the rewards calculation. While there is no conclusive evidence directly linking CPU cores to frame rates, this observation supports the assumption that frame rates play a crucial role in the rewards system.
 
  # Check the Quilibrium Node frame rate
  To check the current and projected frame rates of the Quilibrium Node, use the following command:
