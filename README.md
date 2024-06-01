@@ -116,6 +116,32 @@ chmod +x quil-manager.sh
  11. **Update the Quilibrium Node**
     Update the Quilibrium Node to the latest version.
 
+## Performance evaluation
+ As of version 1.4.18, real-time rewards are not available. Instead, the contribution to the network is evaluated based on how quickly a node can sync, which is measured by the frame rate. Faster frame rates indicate higher performance and contribution to the network.
 
+ The updated rewards system, as of the 5.31 update, supports this method of evaluation. Nodes with higher frame rates are considered to be contributing more effectively to the network. Nodes with higher frame rates also receive higher $Quil rewards based on the data collected.
 
+ According to data from various nodes (from various providers), VPS or dedicated servers with lower frame rates accumulate significantly fewer rewards, even if their CPU cores are higher than other servers. This emphasizes the importance of frame rates in the rewards calculation. While there is no conclusive evidence directly linking CPU cores to frame rates, this observation supports the assumption that frame rates play a crucial role in the rewards calculation.
 
+## Check the Quilibrium Node frame rate
+ To check the current and projected frame rates of the Quilibrium Node, use the following command:
+ 1. Grant permission to the script.
+```shell
+chmod +x check_frame_rate.sh
+```
+
+ 2. Run the script.
+```shell
+./check_frame_rate
+```
+
+ 3. The script will display the current and projected frame rates of the Quilibrium Node. Example output:
+```
+PeerId: <peer-id>
+-------------------------------------------------------
+Current rate: 1.25 frames per second
+Projected rate: 75.00 frames per minute
+Projected rate: 4500.00 frames per hour
+Projected rate: 108000.00 frames per day
+-------------------------------------------------------
+```
