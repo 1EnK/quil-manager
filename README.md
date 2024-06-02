@@ -7,6 +7,7 @@
 - [Options & Features](#options--features)
 - [Node performance evaluation](#node-performance-evaluation)
 
+
 ## Installation
  1. Download the `.sh` script file to the server.
 
@@ -31,7 +32,8 @@ chmod +x quil-manager.sh
     - Select `5` to start the Quilibrium Node
     - When `REPAIR` is generated in the `.config` folder, sync the Quilibrium Node with `option 9`.
     - (Optional) Backup the Quilibrium Node when `keys.yml` is fully generated (no longer showing `null`) with `option 10`.
-    
+
+
 ## Options & Features
  1. **Deploy Quilibrium Node (Only run once)**
     Deploy Quilibrium Node for new servers or re-deploy Quilibrium Node for existing servers. (Recommended to run only once)
@@ -117,6 +119,7 @@ chmod +x quil-manager.sh
  11. **Update the Quilibrium Node**
     Update the Quilibrium Node to the latest version.
 
+
 ## Node performance evaluation
  As of version 1.4.18, real-time rewards are not available. Instead, the contribution to the network is evaluated based on how quickly a node can sync, which is measured by the frame rate. **Faster frame rates indicate higher performance and contribution to the network**.
 
@@ -125,13 +128,15 @@ chmod +x quil-manager.sh
  According to data from various nodes (from various providers), VPS or dedicated servers with lower frame rates accumulate significantly fewer rewards, even if their CPU cores are higher than other servers. This emphasizes the importance of frame rates in the rewards calculation. While there is no conclusive evidence directly linking CPU cores to frame rates, this observation supports the assumption that frame rates play a crucial role in the rewards system.
 
  ### Check the Quilibrium Node frame rate
+ This script will take snapshots of current max_frame and log the data in '~/frame_snapshot.txt'. The script will also calculate the average frame rate based on the first and last snapshots, and display the current and projected frame rates of the Quilibrium Node.
+
  To check the current and projected frame rates of the Quilibrium Node, use the following command:
  1. Grant permission to the script.
 ```shell
 chmod +x check_frame_rate.sh
 ```
 
- 2. Run the script.
+ 2. Run the script serveral times to get the average frame rate.
 ```shell
 ./check_frame_rate
 ```
