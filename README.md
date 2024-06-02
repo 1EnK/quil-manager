@@ -125,9 +125,9 @@ chmod +x quil-manager.sh
  According to data from various nodes (from various providers), VPS or dedicated servers with lower frame rates accumulate significantly fewer rewards, even if their CPU cores are higher than other servers. This emphasizes the importance of frame rates in the rewards calculation. While there is no conclusive evidence directly linking CPU cores to frame rates, this observation supports the assumption that frame rates play a crucial role in the rewards system.
 
  ### Check the Quilibrium Node frame rate
- This script will take snapshots of current max_frame and log the data in `~/frame_snapshot.txt`. The script will also calculate the average frame rate based on the first and last snapshots, and display the current and projected frame rates of the Quilibrium Node.
+ This script will take snapshots of current max_frame and log the data in `~/frame_snapshot.txt`. The script will also calculate the average frame rate based on the first and last snapshots, and display the current and projected frame rates of the Quilibrium Node. 
 
- To check the current and projected frame rates of the Quilibrium Node, use the following command:
+ To check the current and projected frame rates of the Quilibrium Node, **make sure the node is running with GRPC enabled** and follow the steps below:
  1. Grant permission to the script.
 ```shell
 chmod +x check_frame_rate.sh

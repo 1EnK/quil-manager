@@ -25,11 +25,16 @@ update_or_add_line() {
 
 # Function: Initial setup for first-time use
 init() {
-  # Download and install Go
-  wget https://go.dev/dl/go1.20.14.linux-amd64.tar.gz && \
-  sudo tar -xvf go1.20.14.linux-amd64.tar.gz && \
-  sudo mv go /usr/local && \
-  sudo rm go1.20.14.linux-amd64.tar.gz
+  # Check if Go is installed
+  if ! command -v go &> /dev/null; then
+    # Download and install Go
+    wget https://go.dev/dl/go1.20.14.linux-amd64.tar.gz && \
+    sudo tar -xvf go1.20.14.linux-amd64.tar.gz && \
+    sudo mv go /usr/local && \
+    sudo rm go1.20.14.linux-amd64.tar.gz
+  else
+    echo "Go is already installed."
+  fi
   
   # Install Git
   sudo apt-get update && sudo apt-get install -y git
