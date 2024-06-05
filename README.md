@@ -33,9 +33,9 @@ chmod +x quil-manager.sh
     - (Optional) Limit the CPU usage with `option 12`.
 
 ## Options & Features
- 1. **Deploy Quilibrium Node (Only run once)**: Deploy Quilibrium Node for new servers or re-deploy Quilibrium Node for existing servers. (Recommended to run only once)
+ 1. **Deploy Node**: Deploy Quilibrium Node for new servers or re-deploy Quilibrium Node for existing servers. (Recommended to run only once)
 
- 2. **Verify the configuration file**: Verify the ufw settings and node configuration file. The output should show the following if the node is properly configured.
+ 2. **Verify Configurations**: Verify the ufw settings and node configuration file. The output should show the following if the node is properly configured.
 
     Current UFW status:
     ```
