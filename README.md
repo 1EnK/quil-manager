@@ -88,23 +88,23 @@ chmod +x quil-manager.sh
     grpcurl  qclient
     ```
 
- 3. **Modify the .config.yml file**: After running the node for the first time, the config.yml file will be generated. This option will modify the `listenGrpcMultiaddr` and `statsMultiaddr` settings in the config.yml file to enable the GRPC.
+ 3. **Modify config.yml**: After running the node for the first time, the config.yml file will be generated. This option will modify the `listenGrpcMultiaddr` and `statsMultiaddr` settings in the config.yml file to enable the GRPC.
 
  4. **Install qclient and grpcurl**: Install qclient and grpcurl for the Quilibrium Node.
 
- 5. **Start the Quilibrium Node**: Start the Quilibrium Node service.
+ 5. **Start Node**: Start the Quilibrium Node service.
 
- 6. **Stop the Quilibrium Node**: Stop the Quilibrium Node service.
+ 6. **Stop Node**: Stop the Quilibrium Node service.
 
- 7. **View the Quilibrium Node logs**: Display real-time logs of the Quilibrium Node. Press `Ctrl + C` to exit the log.
+ 7. **View logs**: Display real-time logs of the Quilibrium Node. Press `Ctrl + C` to exit the log.
 
- 8. **View the Quilibrium Node status(GRPC)**: Display the status of the Quilibrium Node using GRPC. Install the `grpcurl` and modify the config.yml file before using this option.
+ 8. **View Node status(GRPC)**: Display the status of the Quilibrium Node using GRPC. Install the `grpcurl` and modify the config.yml file before using this option.
 
- 9. **Sync the Quilibrium Node**: Replace the `store` folder with the latest snapshot and create a backup of the current `store` folder.
+ 9. **Sync Node**: Replace the `store` folder with the latest snapshot and create a backup of the current `store` folder.
 
- 10. **Backup the Quilibrium Node**: Create a backup of the `config.yml` and `keys.yml`. A scp command will be generated for you to copy the backup file to your local machine.
+ 10. **Backup Node keys**: Create a backup of the `config.yml` and `keys.yml`. A scp command will be generated for you to copy the backup file to your local machine.
 
- 11. **Update the Quilibrium Node**: Update the Quilibrium Node to the latest version.
+ 11. **Upgrade Node**: Update the Quilibrium Node to the latest version.
 
  12. **Limit the CPU usage**: Enter `0-100` to limit the CPU usage of the Quilibrium Node to certain percentage. VPS providers may suspend the server if the CPU usage is too high.
 
