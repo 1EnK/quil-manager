@@ -36,12 +36,17 @@ calculate_frame_rate() {
     # Get peerId from the first entry
     peerId=$(echo "$first_entry" | awk -F'|' '{print $1}')
 
+    # Print the frame synchroneization rate
+    echo "-------------------------------------------------------"
     echo "PeerId: $peerId"
+    echo "-------------------------------------------------------"
+    echo "Max frame: $last_frame | $(date)"
     echo "-------------------------------------------------------"
     echo "Current rate: $frame_rate / second"
     echo "Projected rate: $frame_rate_min / minute"
     echo "Projected rate: $frame_rate_hour / hour"
     echo "Projected rate: $frame_rate_day / day"
+    echo "-------------------------------------------------------"
   else
     echo "Frame increase rate: 0 frames per second"
   fi
