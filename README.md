@@ -24,19 +24,21 @@ chmod +x quil-manager.sh
  2. Select the options following the below steps:
     - Select `1` to Deploy Quilibrium Node (Only run once)
     - Select `2` to verify the configurations and settings. Compare the output with the expected output in the [Options & Features](#options--features) section.
-    - Select `4` to Install qclient and grpcurl
+    - (Optional) Select `4` to Install qclient and grpcurl
     - Select `5` to start the Quilibrium Node and run for the first time to generate the .config folder.
     - (Optional) Select `3` to Modify the config.yml file.
-    - (Optional) Reboot the server to apply the ufw changes with 'sudo reboot'
-    - Select `5` to start the Quilibrium Node
-    - When `REPAIR` is generated in the `.config` folder, sync the Quilibrium Node with `option 9`.
+    - (Optional) Reboot the server to apply the ufw changes with 'sudo reboot', then run the script to start the Quilibrium Node with `option 5`.
+    - (Optional) When `REPAIR` is generated in the `.config` folder, sync the Quilibrium Node with `option 9`. **Nodes are earning rewards as long as they are running, even if they are not fully synced.**
     - (Optional) Backup the Quilibrium Node when `keys.yml` is fully generated (no longer showing `null`) with `option 10`.
+    - (Optional) Limit the CPU usage with `option 12`.
 
 ## Options & Features
  1. **Deploy Quilibrium Node (Only run once)**
+
     Deploy Quilibrium Node for new servers or re-deploy Quilibrium Node for existing servers. (Recommended to run only once)
 
  2. **Verify the configuration file**
+
     Verify the ufw settings and node configuration file. The output should show the following if the node is properly configured.
 
     Current UFW status:
@@ -91,31 +93,44 @@ chmod +x quil-manager.sh
     ```
 
  3. **Modify the .config.yml file**
+
     After running the node for the first time, the config.yml file will be generated. This option will modify the `listenGrpcMultiaddr` and `statsMultiaddr` settings in the config.yml file to enable the GRPC.
 
  4. **Install qclient and grpcurl**
+
     Install qclient and grpcurl for the Quilibrium Node.
 
  5. **Start the Quilibrium Node**
+
     Start the Quilibrium Node service.
 
  6. **Stop the Quilibrium Node**
+
     Stop the Quilibrium Node service.
 
  7. **View the Quilibrium Node logs**
+
     Display real-time logs of the Quilibrium Node. Press `Ctrl + C` to exit the log.
 
  8. **View the Quilibrium Node status(GRPC)**
+
     Display the status of the Quilibrium Node using GRPC. Install the `grpcurl` and modify the config.yml file before using this option.
 
  9. **Sync the Quilibrium Node**
+
     Replace the `store` folder with the latest snapshot and create a backup of the current `store` folder.
 
  10. **Backup the Quilibrium Node**
+
     Create a backup of the `config.yml` and `keys.yml`. A scp command will be generated for you to copy the backup file to your local machine.
 
  11. **Update the Quilibrium Node**
+
     Update the Quilibrium Node to the latest version.
+
+ 12. **Limit the CPU usage**
+
+    Enter `0-100` to limit the CPU usage of the Quilibrium Node to certain percentage. VPS providers may suspend the server if the CPU usage is too high.
 
 ## Node performance evaluation
  As of version 1.4.18, real-time rewards are not available. Instead, the contribution to the network is evaluated based on how quickly a node can sync, which is measured by the frame rate. **Faster frame rates indicate higher performance and contribution to the network**.

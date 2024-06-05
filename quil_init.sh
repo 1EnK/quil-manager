@@ -253,6 +253,45 @@ upgrade_node() {
   start_service
 }
 
+# Function: Limit the CPU usage of the node service
+limit_cpu_usage() {
+  # Ask user to enter a percentage value for CPU limit (0-100)
+  read -p "Enter the CPU limit percentage (0-100): " cpu_limit_percentage
+
+  # Validate the input
+  if ! [[ "$cpu_limit_percentage" =~ ^[0-9]+$ ]] || [ "$cpu_limit_percentage" -lt 0 ] || [ "$cpu_limit_percentage" -gt 100 ]; then
+  echo "Invalid input. Please enter a number between 0 and 100."
+  exit 1
+  fi
+
+  # Fetch the nproc value to calculate the CPU limit to calculate the CPU limit
+  NPROC=$(nproc)
+  CPU_QUOTA=$(echo "$NPROC * $cpu_limit_percentage" | bc) # NO DECIAML POINTS
+
+  # Update the service file with the CPU limit
+  CEREMONY_SERVICE_FILE="/lib/systemd/system/ceremonyclient.service"
+  SEARCH_LINE="CPUQuota="
+
+  # Stop the service before updating the CPU limit
+  stop_service
+
+  # Check if the line exists in the file
+  if grep -q "^$SEARCH_LINE" "$CEREMONY_SERVICE_FILE"; then
+    # Replace the line if it exists
+    sudo sed -i "s/^$SEARCH_LINE.*/$SEARCH_LINE$CPU_QUOTA%/" "$CEREMONY_SERVICE_FILE"
+    echo "Updated: CPUQuota=$CPU_QUOTA% in $CEREMONY_SERVICE_FILE"
+  else
+    SEARCH_LINE="ExecStart="
+    # Append the CPU limit to the service file
+    sudo sed -i "/^$SEARCH_LINE/a CPUQuota=$CPU_QUOTA%" "$CEREMONY_SERVICE_FILE"
+    echo "Added: CPUQuota=$CPU_QUOTA% to $CEREMONY_SERVICE_FILE"
+  fi
+
+  # Update the systemd service and restart the service
+  sudo systemctl daemon-reload
+  start_service
+}
+
 # Function: Main menu
 show_menu() {
   # Welcome message
@@ -278,14 +317,15 @@ show_menu() {
   echo "9. Sync node (replace store)"
   echo "10. Backup keys and config files"
   echo "11. Upgrade node"
+  echo "12. Limit CPU usage"
   
   # Exit option
   echo -e "\033[1m----------- Script Management -------------\033[0m"
-  echo "12. Exit"
+  echo "13. Exit"
   echo -e "\033[1m-------------------------------------------\033[0m"
 
   # Execute the selected option based on user input
-  read -p "Please enter an option [1-12]: " option
+  read -p "Please enter an option [1-13]: " option
   case $option in
     1)
       init
@@ -321,6 +361,9 @@ show_menu() {
       upgrade_node
       ;;
     12)
+      limit_cpu_usage
+      ;;
+    13)
       exit 0
       ;;
     *)
