@@ -92,6 +92,9 @@ EOF'
   # Remind the user to reload the bashrc and reboot the system
   echo "Please run 'source ~/.bashrc' to update your environment, then run 'go version' to verify the installation."
   echo "After that, please reboot the system to apply the UFW changes"
+
+  # Reload the bashrc
+  source ~/.bashrc
 }
 
 # Function: Verify the current setup
@@ -226,7 +229,7 @@ backup_keys() {
   echo "Replace <LOCAL_PATH> with the desired path on your local machine."
 }
 
-# Function: Upgrade the node
+# Function: Upgrade the node to 1.4.19
 upgrade_node() {
   # Stop the service before upgrading the node
   stop_service
@@ -243,11 +246,16 @@ upgrade_node() {
   git clean -df
   git merge origin/release
 
-  # Rebuild the qclient
-  cd ~/ceremonyclient/client
-  rm ~/go/bin/qclient
-  GOEXPERIMENT=arenas go build -o ~/go/bin/qclient main.go
+  # Update and clean the node directory
+  service ceremonyclient stop  
+  cd ~/ceremonyclient 
+  git reset --hard origin/release-cdn
+  git fetch --all
+  git clean -df
+  git merge origin/release-cdn
   cd ~/ceremonyclient/node
+  sed -i 's/ExecStart=\/root\/ceremonyclient\/node\/node-1.4.18-linux-amd64/ExecStart=\/root\/ceremonyclient\/node\/node-1.4.19-linux-amd64/g' /lib/systemd/system/ceremonyclient.service
+  systemctl daemon-reload
 
   # Restart the service
   start_service
@@ -292,6 +300,12 @@ limit_cpu_usage() {
   start_service
 }
 
+# Function: Check rewards earned by the node (only for rewards earned during the 1.4.19 version)
+check_rewards() {
+  cd ~/ceremonyclient/node
+  ./node-1.4.19-linux-amd64 --node-info
+}
+
 # Function: Main menu
 show_menu() {
   # Welcome message
@@ -311,21 +325,22 @@ show_menu() {
   echo "6. Stop Q node service"
   echo "7. View logs"
   echo "8. Check node status (grpcurl required)"
+  echo "9. Check rewards (1.4.19 only)"
 
   # Node management options
   echo -e "\033[1m------------ Node Management --------------\033[0m"
-  echo "9. Sync node (replace store)"
-  echo "10. Backup keys and config files"
-  echo "11. Upgrade node"
-  echo "12. Limit CPU usage"
+  echo "10. Sync node (replace store)"
+  echo "11. Backup keys and config files"
+  echo "12. Upgrade node"
+  echo "13. Limit CPU usage"
   
   # Exit option
   echo -e "\033[1m----------- Script Management -------------\033[0m"
-  echo "13. Exit"
+  echo "0. Exit"
   echo -e "\033[1m-------------------------------------------\033[0m"
 
   # Execute the selected option based on user input
-  read -p "Please enter an option [1-13]: " option
+  read -p "Please enter an option [0-13]: " option
   case $option in
     1)
       init
@@ -351,19 +366,22 @@ show_menu() {
     8)
       check_node_status
       ;;
-    9)
+    9)  
+      check_rewards
+      ;;
+    10)       
       sync_node
       ;;
-    10)
+    11)
       backup_keys
       ;;
-    11)
+    12)
       upgrade_node
       ;;
-    12)
+    13)
       limit_cpu_usage
       ;;
-    13)
+    0)
       exit 0
       ;;
     *)
