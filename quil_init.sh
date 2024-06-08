@@ -180,31 +180,6 @@ check_node_status() {
   grpcurl -plaintext localhost:8337 quilibrium.node.node.pb.NodeService.GetNodeInfo
 }
 
-# Function: Sync node to snapshot store file
-sync_node() {
-  # Install unzip if not already installed
-  sudo apt-get update
-  sudo apt-get install unzip
-
-  # Download the store snapshot
-  cd ~
-  wget https://snapshots.cherryservers.com/quilibrium/store.zip
-
-  # Unzip the store snapshot
-  unzip store.zip
-  rm store.zip
-
-  # Stop the service before replacing the store
-  stop_service
-
-  # Replace the store
-  mv ~/ceremonyclient/node/.config/store ~/ceremonyclient/node/.config/store.bak
-  mv ~/store ~/ceremonyclient/node/.config/
-
-  # Restart the service
-  start_service
-}
-
 # Function: Backup keys and config files
 backup_keys() {
   # Copy the keys and config files to the backup folder
@@ -335,10 +310,9 @@ show_menu() {
 
   # Node management options
   echo -e "\033[1m------------ Node Management --------------\033[0m"
-  echo "10. Sync node (replace store)"
-  echo "11. Backup keys and config files"
-  echo "12. Upgrade node"
-  echo "13. Limit CPU usage"
+  echo "10. Backup keys and config files"
+  echo "11. Upgrade node"
+  echo "12. Limit CPU usage"
   
   # Exit option
   echo -e "\033[1m----------- Script Management -------------\033[0m"
@@ -346,7 +320,7 @@ show_menu() {
   echo -e "\033[1m-------------------------------------------\033[0m"
 
   # Execute the selected option based on user input
-  read -p "Please enter an option [0-13]: " option
+  read -p "Please enter an option [0-12]: " option
   case $option in
     1)
       init
@@ -375,16 +349,13 @@ show_menu() {
     9)  
       check_rewards
       ;;
-    10)       
-      sync_node
-      ;;
-    11)
+    10)
       backup_keys
       ;;
-    12)
+    11)
       upgrade_node
       ;;
-    13)
+    12)
       limit_cpu_usage
       ;;
     0)
