@@ -38,10 +38,10 @@ calculate_reward_rate() {
   time_diff=$(echo "$last_time - $first_time" | bc)
 
   if (( $(echo "$time_diff != 0" | bc -l) )); then
-    reward_rate=$(echo "scale=2; $reward_diff / $time_diff" | bc)
-    reward_rate_min=$(echo "scale=2; $reward_rate * 60" | bc)
-    reward_rate_hour=$(echo "scale=2; $reward_rate * 3600" | bc)
-    reward_rate_day=$(echo "scale=2; $reward_rate * 86400" | bc)
+    reward_rate=$(echo "scale=6; $reward_diff / $time_diff" | bc)
+    reward_rate_min=$(echo "scale=6; $reward_rate * 60" | bc)
+    reward_rate_hour=$(echo "scale=6; $reward_rate * 3600" | bc)
+    reward_rate_day=$(echo "scale=6; $reward_rate * 86400" | bc)
 
     # Get peerId from the first entry
     peerId=$(echo "$first_entry" | awk -F'|' '{print $1}')
