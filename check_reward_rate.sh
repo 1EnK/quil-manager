@@ -10,8 +10,14 @@ log_current_values() {
   peerId=$(./node-1.4.19-linux-amd64 --node-info | grep 'Peer ID:' | awk '{print $3}')
   balance=$(./node-1.4.19-linux-amd64 --node-info | grep 'Unclaimed balance' | awk '{print $3}')
   
-  current_time=$(date +%s)
-  echo "$peerId|$balance|$current_time" >> "$log_file"
+  # If balance is not null, then log the values
+  if [ -n "$balance" ]; then
+    current_time=$(date +%s)
+    echo "$peerId|$balance|$current_time" >> "$log_file"
+  else
+    echo "Invalid reward balance. Please make sure the node is running with GRPC enabled."
+    exit 1
+  fi
 }
 
 # Function to calculate the rate of reward increase
