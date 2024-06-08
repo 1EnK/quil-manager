@@ -211,6 +211,7 @@ backup_keys() {
   mkdir -p ~/quil_keys_bak
   cp ~/ceremonyclient/node/.config/keys.yml ~/quil_keys_bak
   cp ~/ceremonyclient/node/.config/config.yml ~/quil_keys_bak
+  cp -r ~/ceremonyclient/node/.config/store ~/quil_keys_bak
 
   # Create a tarball of the backup folder
   tar -czvf ~/quil_keys_bak.tar.gz ~/quil_keys_bak
@@ -227,6 +228,11 @@ backup_keys() {
   echo "To download the backup file, run the following command on your local machine:"
   echo "scp $username@$ip_address:~/quil_keys_bak.tar.gz <LOCAL_PATH>"
   echo "Replace <LOCAL_PATH> with the desired path on your local machine."
+
+  # Display scp command for ssh users
+  echo ""
+  echo "For SSH users, run the following command on your local machine:"
+  echo "scp -i <PATH_TO_SSH_KEY> $username@$ip_address:~/quil_keys_bak.tar.gz <LOCAL_PATH>"
 }
 
 # Function: Upgrade the node to 1.4.19
