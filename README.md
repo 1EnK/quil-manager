@@ -5,7 +5,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Options & Features](#options--features)
-- [Node performance evaluation](#node-performance-evaluation)
+- [Node reward evaluation](#node-reward-evaluation)
 
 ## Installation
  1. Download the `.sh` script file to the server.
@@ -108,30 +108,30 @@ chmod +x quil-manager.sh
 
  12. **Limit the CPU usage**: Enter `0-100` to limit the CPU usage of the Quilibrium Node to certain percentage. VPS providers may suspend the server if the CPU usage is too high.
 
-## Node performance evaluation
- Evaluate the speed of node synchronization with the frame rate.
+## Node reward evaluation
+ Evaluate the speed of reward accumalation.
 
- ### Check the Quilibrium Node frame rate
- This script will take snapshots of current max_frame and log the data in `~/frame_snapshot.txt`. The script will also calculate the average frame rate based on the first and last snapshots, and display the current and projected frame rates of the Quilibrium Node. 
+ ### Check the Quilibrium Node reward rate
+ This script will take snapshots of current max_reward and log the data in `~/reward_snapshot.txt`. The script will also calculate the average reward rate based on the first and last snapshots, and display the current and projected reward rates of the Quilibrium Node. 
 
- To check the current and projected frame rates of the Quilibrium Node, **make sure the node is running with GRPC enabled** and follow the steps below:
+ To check the current and projected reward rates of the Quilibrium Node, **make sure the node is running with GRPC enabled** and follow the steps below:
  1. Grant permission to the script.
 ```shell
-chmod +x check_frame_rate.sh
+chmod +x check_reward_rate.sh
 ```
 
- 2. Run the script serveral times to get the average frame rate.
+ 2. Run the script serveral times to get the average reward rate.
 ```shell
-./check_frame_rate
+./check_reward_rate
 ```
 
- 3. The script will display the current and projected frame rates of the Quilibrium Node. Example output:
+ 3. The script will display the current and projected reward rates of the Quilibrium Node. Example output:
 ```
 PeerId: <peer-id>
 -------------------------------------------------------
-Current rate: 1.25 frames per second
-Projected rate: 75.00 frames per minute
-Projected rate: 4500.00 frames per hour
-Projected rate: 108000.00 frames per day
+Current rate: 1.25 reward per second
+Projected rate: 75.00 reward per minute
+Projected rate: 4500.00 reward per hour
+Projected rate: 108000.00 reward per day
 -------------------------------------------------------
 ```
